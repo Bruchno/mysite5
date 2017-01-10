@@ -1,0 +1,22 @@
+﻿<?php
+include 'header.php';
+if(isset($_SESSION['user']))
+{
+	$user = $_SESSION['user'];
+}
+$db = dbconnect();
+$stmt = $db->query("SELECT * FROM users");
+while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
+{
+	echo '<div class = "avatarka">';
+	$user = $row['USER'];
+	$avatar = $row['AVATAR'];
+	$id_user = $row['ID'];
+	echo '<img src ="'.$avatar.'"><br />';
+	echo '<p>'.$user.'</p>';
+	echo '<form action = "avtornews.php" method = "post">
+	<input type = "hidden" name = "id_user" value = "'.$id_user.'"/>
+	<input type = "submit" name = "avtor" value = "Всі новини автора"/></form></div><br/></br>';
+}
+$db = null;
+?>
