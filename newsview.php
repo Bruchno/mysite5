@@ -73,17 +73,13 @@ $st->bindParam(':count_like', $n);
 $st->bindParam(':count_notlike', $n);
 $st->execute();
 recording($id_user, $RECORD_ID);
-countstatistic($RECORD_ID);
 }
 if (isset($_POST['recordview']))
 {
 	$id_user = $_POST['user_id'];
 	$RECORD_ID = $_POST['record_id'];
 	recording($id_user, $RECORD_ID);
-	countstatistic($RECORD_ID);
 }
-function countstatistic($RECORD_ID)
-{
 	$id_record = $RECORD_ID;
 	$db = dbconnect();
 		$st = $db->prepare("SELECT * FROM count_information WHERE record = :idrecord");
@@ -95,14 +91,22 @@ function countstatistic($RECORD_ID)
 			$countlike = $r['count_like'];
 			$countnotlike = $r['count_notlike'];
 		}
-		echo '<table class = "countview"> <tr><th>Переглядів</th>';
-		echo '<th><input type = "button" onclick = "likeclik('; echo $id_record.')" value = "Подобається"/></th>';
-		echo '<th><input type = "button" click = "notlikeclik('.$id_record.')" value = "Неподобається"/></th>';
-		echo '</tr><tr><th>'.$countview.'</th>';
-		echo '<th><div id = "countlike">'.$countlike.'</div></th>';
-		echo '<th><div id = "notlikeclik">'.$countnotlike.'</div></th></tr></table>';
-}
-?>
+		$countview ++;
+		$db = null;
+		$dbupdate = dbconnect();
+		$sql = "UPDATE count_information SET count_view =? WHERE record =?";
+		$q = $dbupdate->prepare($sql);
+		$q->execute(array($countview, $id_record));
+		?>
+		<form action = "" method = "post">
+		<table class = "countview"> <tr><th>Переглядів</th>
+		<th><input type = "button" onclick = "likeclik(<?php echo $id_record;?>)" id = "like" value = "Подобається"/></th>
+		<th><input type = "button" onclick = "notlikeclik(<?php echo $id_record;?>)" id = "notlike" value = "Неподобається"/></th>
+		</tr><tr><th><?php echo $countview;?></th>
+		<th><div id = "countlike"><?php echo $countlike;?></div></th>
+		<th><div id = "notlikeclik"><?php echo $countnotlike;?></div></th></tr>
+		<tr>Номер новости: <?php echo $id_record; ?></tr></table></form>
+		<footer>2016    "Пробный проект"</footer>
 <script src="jquery-3.0.0.min.js"></script>
 <script src="script.js"></script>
 </body>

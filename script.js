@@ -140,9 +140,8 @@ function viewbutton()
 			);
 	});
 }
-function likeclik()
+function likeclik(record)
 {
-	/*document.getElementById("countlike").innerHTML = "work!!! "
 		var xmlhttp = getXmlHttp();
 		xmlhttp.open('POST', 'likeenable.php', true);//Открыли соединение
 		xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');//Отправили тип содержимого
@@ -150,9 +149,31 @@ function likeclik()
 		xmlhttp.onreadystatechange = function() { //ждем ответа
 		if (xmlhttp.readyState == 4) {//ответ пришел
 			if (xmlhttp.status == 200) {//Сервер вернул код 200 (что есть хорошо)
-				 document.getElementById("countlike").innerHTML += xmlhttp.responseText;;
+				 document.getElementById("countlike").innerHTML = xmlhttp.responseText;
 				}
 		   }   
-	   }*/
-	   document.getElementById("countlike").innerHTML = "e32r5";
+	   }
+	   countlikebutton();
+}
+function notlikeclik(record)
+{
+		var xmlhttp = getXmlHttp();
+		xmlhttp.open('POST', 'notlikeenable.php', true);//Открыли соединение
+		xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');//Отправили тип содержимого
+		xmlhttp.send("record="+encodeURIComponent(record));//отправили запрос
+		xmlhttp.onreadystatechange = function() { //ждем ответа
+		if (xmlhttp.readyState == 4) {//ответ пришел
+			if (xmlhttp.status == 200) {//Сервер вернул код 200 (что есть хорошо)
+				 document.getElementById("notlikeclik").innerHTML = xmlhttp.responseText;
+				}
+		   }   
+	   }
+	   countlikebutton();
+}
+function countlikebutton()
+{
+	var likebutton = document.getElementById("like");
+	var notlikebutton = document.getElementById("notlike");
+	likebutton.disabled = true;
+	notlikebutton.disabled = true;
 }

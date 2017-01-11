@@ -44,7 +44,7 @@ display: block;
 	 width: 1200px;
 	 position: relative;
 	 margin: 7px auto;
-	 background: #00aa85;
+	 background: #55aa85;
 	 border: 1px solid #888;
 	 border-radius: 5px;
  }
@@ -213,4 +213,14 @@ header {
 }
 .ukr {
 	display: blok;
+}
+footer {
+	background-color: 39b54a;
+	background-repeat: no-repeat;
+	padding: 20px;
+	text-align: center;
+	color: fff;
+	position: fixed;
+	bottom: 0;
+	width: 1200px;
 }

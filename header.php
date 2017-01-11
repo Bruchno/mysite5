@@ -57,3 +57,4 @@ else
 <a href = "identificate.php" id = "identificate" ><input type = "button" value = "Так" /></a>
 </div>
 <div id = "overlay"></div>
+
