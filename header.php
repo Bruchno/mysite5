@@ -49,6 +49,7 @@ else
 	'<li><a href="logout.php">Вийти</a></li></div>';
 }
 ?>
+<footer>2016    "Пробный проект"</footer>
 <div id = "modal_login" class = "modal_div">
 <span class = "modal_close">X</span><br/><br/>
 <p>Для створення новини необхідно зареєструватися або підтвердити свою реєстрацію.</p>

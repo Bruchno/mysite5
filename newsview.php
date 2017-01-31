@@ -89,7 +89,7 @@ if (isset($_POST['recordview']))
 		{
 			$countview = $r['count_view'];
 			$countlike = $r['count_like'];
-			$countnotlike = $r['count_notlike'];
+			$countnotlike = $r['count_notlike']; 
 		}
 		$countview ++;
 		$db = null;
@@ -106,7 +106,6 @@ if (isset($_POST['recordview']))
 		<th><div id = "countlike"><?php echo $countlike;?></div></th>
 		<th><div id = "notlikeclik"><?php echo $countnotlike;?></div></th></tr>
 		<tr>Номер новости: <?php echo $id_record; ?></tr></table></form>
-		<footer>2016    "Пробный проект"</footer>
 <script src="jquery-3.0.0.min.js"></script>
 <script src="script.js"></script>
 </body>
