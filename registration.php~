@@ -18,7 +18,7 @@
 <form enctype="multipart/form-data" action = "viewregistration1.php" class = "formnews" name="registration" method = "post" onchange="return validate(this)">
 <table width = "90%">
 <tr><label for = "avatar"> <span id="output"><h3>Вставити фото</h3></br>
-                  <img src="512x512bb.jpeg" style = "width: 200px"> </span></label>
+                  <img src="512x512bb.jpg" style = "width: 200px"> </span></label>
 <input type="file" name="avatar" id = "avatar" style = "visibility: hidden; margin: 20px;" ></tr>
 <tr><td colspan="2"><font color = "red" size = 1><i><p id ="inform"></p></i></font></td></tr>
 <tr><td class= "russ">Логин</td><td class="ukr">Логін</td>

@@ -4,7 +4,7 @@ require 'process.php';
 require 'process2.php';
 function dbconnect()
 {
-	$db = new PDO("mysql:host=localhost;dbname=usersinformation", "root", "2609");
+	$db = new PDO("mysql:host=localhost;dbname=usersinformation", "mama", "2609");
 	$db->query("SET NAMES 'utf-8'");
 	return $db;
 }

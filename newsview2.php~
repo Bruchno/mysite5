@@ -1,0 +1,14 @@
+<?php
+if ( isset($_FILES) ) { 
+    
+    foreach ($_FILES['f']['name'] as $file){
+    $uploaddir = 'i/';
+    $exp = $file['f']['name'][$k];
+     
+    $uploadfile = $uploaddir . $exp;
+ 
+    move_uploaded_file($_FILES['f']['tmp_name'][$k], $uploadfile);
+    
+ }
+
+?>
