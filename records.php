@@ -14,7 +14,7 @@ $n = $GLOBALS['num'];
 	{
 		$idrecord = $row['RECORD_ID'];
 		$datawrite = $row['DATA'];
-		$text = crop_str($row['TEXT_RECORD'], 40);
+		$text = $row['TEXT_RECORD'];
 		$id_user = $row['ID_USER'];
 		$dbn = dbconnect();
 		$st = $dbn->prepare("SELECT * FROM users WHERE ID = :iduser");
@@ -25,16 +25,15 @@ $n = $GLOBALS['num'];
 			$avatar = $r['AVATAR'];
 			$login = $r['USER'];
 		} $dbn = null;
-		echo '<div class = "avatarka" style = "float:left"><img src = "'.$avatar.'"><br />
-		<p>'.$login.'</p></div>
-		<div class = "reclama" ><p>'.$text.'</p><p>'.$datawrite.'</p></div>
-		<form action = "newsview.php" method = "post">
-		<input type = "hidden" name = "user_id" value = "'.$id_user.'"/>
-		<input type = "hidden" name = "record_id" value = "'.$idrecord.'"/>
-		<input type ="submit" name = "recordview" value = "Переглянути новину"/></form>';
-		echo '<div style=" width:100%; height:1px; clear:both;">.</div>';
+		echo '<div class = "blog"><table><tr><td>
+		<div class = "avatarka" style = "float:left"><p>'.$login.'</p> <p>'.$datawrite.'</p>
+		<img src = "'.$avatar.'" style = "width: 100%;"><br />
+		</div></td><td>';
+		echo '<p>'.$text.'</p>';
+		recording($id_user, $idrecord);
+		echo '</td></tr></table></div>';
 	} $db = null;
-	echo '<br/><br /><form action = "newsview.php" method = "post">
+	/*echo '<br/><br /><form action = "newsview.php" method = "post">
 	<input type = "submit" name = "next" class = "nextButton" value = "Далі">
-	</form></body>';
+	</form></body>';*/
 ?>

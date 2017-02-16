@@ -1,4 +1,4 @@
-<html>
+<html> //загрузка аватарок с превью через javascript
 <head>
 <link rel='stylesheet' type='text/css' href='styles.css'>
 <script type="text/javascript" src="assets_js_ajaxupload.3.5.js"></script>
@@ -15,7 +15,7 @@
 <li><a href="index.php">Повернутись на головну<a></li></ul></div></div>
 <div class="russ"><div class = "menu" ><ul class="menu">
 <li><a href="index.php">Вернуться на главную</a></li><ul></div></div>
-<form enctype="multipart/form-data" action = "viewregistration1.php" class = "formnews" name="registration" method = "post" onchange="return validate(this)">
+<form enctype="multipart/form-data" action = "viewregistration.php" class = "formnews" name="registration" method = "post" onchange="return validate(this)">
 <table width = "90%">
 <tr><label for = "avatar"> <span id="output"><h3>Вставити фото</h3></br>
                   <img src="512x512bb.jpeg" style = "width: 200px"> </span></label>

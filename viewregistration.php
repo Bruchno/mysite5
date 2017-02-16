@@ -1,9 +1,13 @@
-﻿<?php
+<?php
 include 'header.php';
-if (isset($_POST['newuser'])){
 	$un = $_POST['login'];
 	$up = $_POST['pass'];
-	$useravatar = $_POST['filename'];
+	$avatar = $_POST['filename'];
+		$filename = $_FILES['avatar']['name'];
+		$source = $_FILES['avatar']['tmp_name'];
+		$target = $path_to_image_directory.$filename;
+		move_uploaded_file($source, $target);
+		$useravatar = 'i/'.$filename;
 	$_SESSION['user'] = $un;
 	$db = dbconnect();
 	$stmt = $db->prepare("INSERT INTO users (USER, PASS, AVATAR) VALUES (:USER, :PASS, :AVATAR)");
@@ -13,19 +17,10 @@ if (isset($_POST['newuser'])){
 	$stmt->execute();
 	$db = null;
 	createtable($un);
-}
-if (isset($_POST['user']))
-{
-	$un = $_POST['login'];
-	$_SESSION['user']= $un;
-	createtable($un);
-}
+	echo '<div class = "textindex">'.
+	'<p><span class="ukr">Вітаємо! Продовжуйте роботу, </span><span class = "russ">Поздравляем! Продолжайте работу</span></p>';
+	echo '<p ><span class = "russ">Проверка прошла успешно: </span><span class="ukr">Перевірка пройшла успішно: </span>'.
+	'<img src = "'.$useravatar.'" style = "width: 200px"/></br>'.$un.' '.$up.' </p>';
+	echo '<a href = "redaction_news.php"><button>Створити новину</button></a>'.
+	'<a href = "index.php"><button>На головну</button></a></div>';	
 ?>
-<div id = "entrnews" class = "modal_div">
-	<p>Вітаємо! Продовжуйте роботу</p>
-	<a href = "redaction_news.php"><input type = "button" value = "Ok" /></a>
-	</div><div id = "overlay"></div></div>
-<script src="jquery-3.0.0.min.js"></script>
-<script src="script.js"></script>
-<script>viewbutton();</script>
-</body>

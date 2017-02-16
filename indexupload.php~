@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+  <title>
+    File uploader
+  </title>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+ 
+<body>
+<form enctype="multipart/form-data" action="newsview2.php" method="POST" id="mainForm">
+<label for = "uploadImage"> <span id="output"><h3>Вставити фото</h3></br>
+                  <img src="Autumn_Maple_Branches_503106.jpg" style = "width: 200px"> </span></label>
+  <input id="uploadImage" type="file" accept="image/*" name="image" style = "visibility: hidden; margin: 20px;"/>
+  <input id="button" type="submit" style = "visibility: hidden;">
+</form>
+<div id="results"></div>
+<img style="display:none" id="loader" src="loader.gif" alt="Loading...." title="Loading...." />
+<script>
+ $('#mainForm').on('change', function(e){
+    e.preventDefault();
+    var maxFileSize = 100000000,
+    data = new FormData;
+    $.each(this.image.files, function (i, file){
+        if(file.size <= maxFileSize){
+            data.append('image[]', file);
+        }
+    });
+    $.ajax({
+        type: "POST",
+    url: "newsview2.php",
+    data: data,
+    contentType: false,
+        processData: false,
+        beforeSend: function() {
+            $('#loader').show();
+        }
+    }).done(function (html) {
+        $("#results").append(html);
+        $('#loader').hide();
+        $('#mainForm')[0].reset();
+    });
+});
+</script>
+</body>
+</html>
+
+	

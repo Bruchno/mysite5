@@ -40,7 +40,7 @@ return $var;
 }
 function recording($id_user, $id_record)
 {
-	$dbn = dbconnect();
+	/*$dbn = dbconnect();
 		$st = $dbn->prepare("SELECT * FROM users WHERE ID = :iduser");//
 		$st->bindParam(':iduser', $id_user);
 		$st->execute();
@@ -58,12 +58,12 @@ function recording($id_user, $id_record)
 			$datarecording = $row['DATA'];
 			$textrecording = $row['TEXT_RECORD'];
 		}
-		echo '<div class = "avatarka"><img src = "'.$avatar.'"><br />
+		echo '<div class = "avatarka"><img src = "'.$avatar.'" style = "width: 180px"><br />
 		<p>'.$login.'</p><span>'.$datarecording.'</span></div>';
-		echo '<div style=" width:100%; height:1px; clear:both;">.</div>';
+		echo '<div style=" width:100%; height:1px; clear:both;"></div>';
 		echo '<div class = "textindex" ><p>'.$textrecording.'</p></div>';
 		$db = null;
-		$arrayimage = array();
+		$arrayimage = array();*/
 		$dbh = dbconnect();//
 		$stm = $dbh->prepare("SELECT * FROM images WHERE id_record = :idrecord");
 		$stm->bindParam(':idrecord', $id_record);
@@ -71,7 +71,7 @@ function recording($id_user, $id_record)
 		echo '<div class = "blokfoto">';
 		while ($rowimg = $stm->fetch(PDO::FETCH_ASSOC))
 		{
-			echo '<img src ="'.$rowimg['imagepath'].'">';
+			echo '<img src ="'.$rowimg['imagepath'].'" style = "width: 47%;">';
 		}
 		echo '</div>';
 		$dbh = null;		

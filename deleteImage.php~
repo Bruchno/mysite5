@@ -1,0 +1,7 @@
+<?php
+$record = $_POST['id'];
+if (unlink ($id))
+{
+	echo "Yes";
+} else {echo "No"; }		
+?>

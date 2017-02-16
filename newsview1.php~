@@ -40,7 +40,18 @@ if (isset($_POST))
 			$st->execute();
 			$pdo = null;
 			
-			$db = dbconnect();
+$file = $_POST['f'];
+foreach($_FILES['f']['name'] as $k=>$file) {
+ if (!$_FILES['f']['error'][$k]) {
+   if (is_uploaded_file($_FILES['f']['tmp_name'][$k])) {
+     if (move_uploaded_file($_FILES['f']['tmp_name'][$k], "i/".$_FILES['f']['name'][$k])) {
+       echo 'Файл: '.$_FILES['f']['name'][$k].' загружен.<br />';
+     }
+   }
+ }
+}
+
+			/*$db = dbconnect();
 			$v = $_POST['f']
 			foreach($_FILES['f']['name']) as $i=>$v) {
 				if($_FILES['file']['type'][$i] == "image/gif" || $_FILES['file']['type'][$i] == "image/png" || 
@@ -71,7 +82,7 @@ if (isset($_POST))
 				                     }
                }
    }
-      $db = null;
+      $db = null;*/
       $str = $un.", Ваш запис №:".$RECORD_ID." від ".$dey;
       $db = null;	
 echo $str;

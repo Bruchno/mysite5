@@ -1,5 +1,5 @@
 ﻿<?php
-$db = new PDO("mysql:host=localhost;dbname=usersinformation", "mama", "2609");
+$db = new PDO("mysql:host=localhost;dbname=usersinformation", "root", "2609");
 $login = strtolower(htmlspecialchars($_POST['login']));
 $stmt = $db->prepare("SELECT * FROM users WHERE USER= :user");
 $stmt->bindParam(':user', $login);

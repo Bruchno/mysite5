@@ -14,7 +14,7 @@ if (isset($_POST['avtor']))
 		$avatar = $row['AVATAR'];
 		$id_user = $row['ID'];
 		echo '<div class = "avatarka">';
-		echo '<img src ="'.$avatar.'"><br />';
+		echo '<img src ="'.$avatar.'" style = "width: 100%"><br />';
 		echo '<p>'.$user.'</p></div>';
 	}
 	$dbn = null;

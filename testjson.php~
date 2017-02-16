@@ -1,0 +1,15 @@
+<?php
+include 'header.php';
+if (isset($_POST['newsbutton']))
+{
+	$news = $_POST['redaction_text'];
+	$imagejson = $_POST['imageArray'];
+	echo 'Получен текст: '.$news ;
+	echo '</br> Список картинок: '.$imagejson;
+	$arrayImage = explode(", ", $imagejson);
+			for ($i = 0; $i<= count($arrayImage); $i++)
+			{
+				echo '<br> Картинка №'.$i .' '.$arrayImage[$i]. ";";
+			}
+		}
+?>

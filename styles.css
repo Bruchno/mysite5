@@ -127,7 +127,6 @@ display: block;
 	 color: red;
 	 background: #bbb;
 	 text-align: center;
-	 top: 100px;
 	 float: right;
 	 right: 120px;
  }
@@ -141,10 +140,15 @@ display: block;
  .blokfoto , #blokfoto {
 	 display: block;
 	 position: relative;
-    width : 400px;
-	height: 400px;
-	margin: 10px 10px 10px 10px;
+	padding: 10px 10px 10px 10px;
     
+ }
+ .blog {
+width: 100%;
+border-color: #bdb;
+border: 1px solid #bbb;
+border-radius: 5px;
+text-align: center;
  }
  .loginuser {
   margin:100px;

@@ -18,7 +18,6 @@ if (isset($_SESSION['user']))
 	$user = $_SESSION['user'];
 	$logeddin = true;
 	$userstr = " ($user)";
-	createtable($user);
 } else $logeddin = false;
 if ($logeddin)
 {
@@ -36,17 +35,18 @@ if ($logeddin)
 }
 else 
 {
-	echo '<div style=" width:100%; height:1px; clear:both;">.</div>';
+	
 	date_default_timezone_set('UTC');
 	$dey = date("d.m.y");
 	$time=date("H:i");
-	echo '<div class = "hello">Вітаємо на сайті! '.$user.'<br />'.$time.'   '.$dey.'</div>';
+	echo '';
 	echo '<div class = "menu"><br><ul class="menu">'.
 	'<li><a href="index.php">Головна</a></li>'.
 	'<li><a href="members.php">Дописувачі</a></li>'.
 	'<li><a href="#modal_login" class = "open_modal" id = "login_pop">Створити новину</a></li>'.
 	'<li><a href="records.php">Переглянути новини</a></li>'.
-	'<li><a href="logout.php">Вийти</a></li></div>';
+	'<li><div class = "hello">Вітаємо на сайті! '.$user.'<br />'.$time.'   '.$dey.'</div></li>';
+	echo '<div style=" width:100%; height:1px; clear:both;"></div>';
 }
 ?>
 <div id = "modal_login" class = "modal_div">
